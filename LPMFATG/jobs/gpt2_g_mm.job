@@ -1,0 +1,63 @@
+#!/bin/bash -l
+#SBATCH --job-name=b-2tpg_g_mm
+#SBATCH --mail-user=ifeanyi.ezukwoke@emse.fr
+#SBATCH --mail-type=ALL
+#SBATCH --gres=gpu:1
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=50G
+#SBATCH --time=7-00:00:00
+#SBATCH --partition=audace2018
+ulimit -l unlimited
+unset SLURM_GTIDS
+echo -----------------------------------------------
+echo SLURM_NNODES: $SLURM_NNODES
+echo SLURM_JOB_NODELIST: $SLURM_JOB_NODELIST
+echo SLURM_SUBMIT_DIR: $SLURM_SUBMIT_DIR
+echo SLURM_SUBMIT_HOST: $SLURM_SUBMIT_HOST
+echo SLURM_JOB_ID: $SLURM_JOB_ID
+echo SLURM_JOB_NAME: $SLURM_JOB_NAME
+echo SLURM_JOB_PARTITION: $SLURM_JOB_PARTITION
+echo SLURM_NTASKS: $SLURM_NTASKS
+echo SLURM_TASKS_PER_NODE: $SLURM_TASKS_PER_NODE
+echo SLURM_NTASKS_PER_NODE: $SLURM_NTASKS_PER_NODE
+echo -----------------------------------------------
+echo Run program...
+source ~/meso-env/env.sh
+python pretrainer.py \
+        --model_type gpt2 \
+        --model_name_or_path gpt2 \
+        --do_train \
+        --do_eval \
+        --max_seq_length 128 \
+        --per_gpu_train_batch_size 1 \
+        --learning_rate 5e-5 \
+        --num_train_epochs 10.0 \
+        --output_dir result/ \
+        --eval_dir evaluation/ \
+        --overwrite_output_dir \
+        --fp16 \
+        --fp16_opt_level O2 \
+        --gradient_accumulation_steps 1 \
+        --seed 42 \
+        --do_lower_case \
+        --warmup_steps 100 \
+        --logging_steps 100 \
+        --save_steps 100 \
+        --evaluate_during_training \
+        --adam_epsilon 1e-8 \
+        --weight_decay 0.05 \
+        --max_grad_norm 1.0 \
+        --return_token_type_ids \
+        --use_variational_loss \
+        --vae_model_name gcvae \
+        --mmd_type mmd \
+        --beta 5.0 \
+        --gamma 500.0 \
+        --init_kld 1 \
+        --init_bce 0.01 \
+        --init_mmd 0.01 \
+        --latent_dim 100 \
+        --max_steps -1 
+echo -----------------------------------------------
