@@ -23,35 +23,35 @@ show that it compares exactly with human judgment than existing metrics.
 
  - Clone the repository: ```git clone https://github.com/AI-for-Fault-Analysis-FA4-0/Leveraging-Pre-trained-Models-for-Failure-Analysis-Triplets-Generation```
  - Run training and evaluation example
-    - ```python
-           python pretrainer.py \
-           --model_type gpt2 \
-           --model_name_or_path gpt2 \
-           --do_train \
-           --do_eval \
-           --max_seq_length 128 \
-           --per_gpu_train_batch_size 1 \
-           --learning_rate 5e-5 \
-           --num_train_epochs 5.0 \
-           --output_dir result/ \
-           --eval_dir evaluation/ \
-           --overwrite_output_dir \
-           --fp16 \
-           --fp16_opt_level O2 \
-           --gradient_accumulation_steps 1 \
-           --seed 42 \
-           --do_lower_case \
-           --warmup_steps 100 \
-           --logging_steps 100 \
-           --save_steps 100 \
-           --evaluate_during_training \
-           --save_total_limit 1 \
-           --adam_epsilon 1e-8 \
-           --weight_decay 0.05 \
-           --max_grad_norm 1.0 \
-           --return_token_type_ids \
-           #--use_weights \
-           --max_steps -1
+    - ```python ```\
+            ```python pretrainer.py  ```\
+            ```--model_type gpt2 ``` \
+            ```--model_name_or_path gpt2 ``` \
+            ```--do_train ``` \
+            ```--do_eval ``` \
+            ```--max_seq_length ```  ```128 ``` \
+            ```--per_gpu_train_batch_size ```  ```1 ``` \
+            ```--learning_rate ```  ```5e-5 ``` \
+            ```--num_train_epochs ```  ```5.0 ``` \
+            ```--output_dir ```  ```result/ ``` \
+            ```--eval_dir ```  ```evaluation/ ``` \
+            ```--overwrite_output_dir ``` \
+            ```--fp16 ``` \
+           ``` --fp16_opt_level ```  ```O2 ``` \
+            ```--gradient_accumulation_steps ```  ```1 ``` \
+            ```--seed ```  ```42 ``` \
+            ```--do_lower_case ``` \
+            ```--warmup_steps ```  ```100 ``` \
+            ```--logging_steps ```  ```100 ``` \
+            ```--save_steps ```  ```100 ``` \
+           ``` --evaluate_during_training ``` \
+            ```--save_total_limit ```  ```1 ``` \
+            ```--adam_epsilon ```  ```1e-8 ``` \
+            ```--weight_decay ```  ```0.05 ``` \
+            ```--max_grad_norm ```  ```1.0 ``` \
+            ```--return_token_type_ids ``` \
+            ```#--use_weights ``` \
+            ```--max_steps ```  ```-1 ```
            ```
 - Model type/name with Causal LMHead
   - ```facebook/bart-large-cnn```: Bidirectional Auto-Regressive Transformer
