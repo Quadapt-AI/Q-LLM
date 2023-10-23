@@ -24,9 +24,9 @@ show that it compares exactly with human judgment than existing metrics.
  - Clone the repository: ```git clone https://github.com/AI-for-Fault-Analysis-FA4-0/Leveraging-Pre-trained-Models-for-Failure-Analysis-Triplets-Generation```
  - Run training and evaluation example
     - ```python ```\
-            ```python pretrainer.py  ```\
-            ```--model_type gpt2 ``` \
-            ```--model_name_or_path gpt2 ``` \
+            ```python``` ```pretrainer.py  ```\
+            ```--model_type``` ```gpt2 ``` \
+            ```--model_name_or_path``` ```gpt2 ``` \
             ```--do_train ``` \
             ```--do_eval ``` \
             ```--max_seq_length ```  ```128 ``` \
